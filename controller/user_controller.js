@@ -31,7 +31,7 @@ exports.signup = async (req, res) => {
 
     const verificationToken = user.generateVerificationToken();
     // console.log(verificationToken);
-    const url = `http://localhost:2000/verify/${verificationToken}`;
+    const url = `https://email-verification-ov42.onrender.com/verify/${verificationToken}`;
     // console.log(url);
 
     transporter.sendMail({
