@@ -71,8 +71,8 @@ exports.verify = async (req, res) => {
   // const token1 = req.params;
   // console.log(req.params);
   // console.log(token1);
-  const token2 = JSON.stringify(req.params);
-  const token = token2.slice(7, -2);
+  const token1 = JSON.stringify(req.params);
+  const token = token1.slice(7, -2);
   // const token = req.params.token;
   console.log(token);
   if (!token) {
@@ -86,12 +86,12 @@ exports.verify = async (req, res) => {
   }
   try {
     const user = await User.findOne({ _id: payload.ID }).exec();
-    console.log(user);
+    // console.log(user);
     if (!user) {
       return res.status(404).send("User Not Found");
     }
     user.verified = true;
-    console.log(user);
+    // console.log(user);
     await user.save();
     return res.status(200).send("Email Verified");
   } catch (error) {
